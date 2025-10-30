@@ -8,6 +8,6 @@
         username: "{{ lookup('env','VMWARE_USER') }}"
         password: "{{ lookup('env','VMWARE_PASSWORD') }}"
         validate_certs: false
-        vm_name: "{{ inventory_hostname }}"
+        vm_name: "{{ hostvars[inventory_hostname]['config']['name'] }}"
       delegate_to: localhost
 
