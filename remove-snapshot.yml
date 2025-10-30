@@ -1,3 +1,4 @@
+---
 - name: Remove a snapshot
 
   community.vmware.vmware_guest_snapshot:
