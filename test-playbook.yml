@@ -1,9 +1,18 @@
 ---
-- name: Test Playbook
-  hosts: localhost
+- name: Take snapshots of VMs
+  hosts: all                # AWX Limit will filter which hosts are actually targeted
   gather_facts: false
   tasks:
-    - name: Print hello
-      debug:
-        msg: "Hello AWX!"
+    - name: Create a snapshot
+      community.vmware.vmware_guest_snapshot:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ datacenter_name }}"
+        folder: "/{{ datacenter_name }}/vm/"
+        name: "{{ inventory_hostname }}"       # use the host's name from inventory
+        state: present
+        snapshot_name: snap1
+        description: "Snapshot created by AWX"
+      delegate_to: localhost                   # API call is made from localhost
 
