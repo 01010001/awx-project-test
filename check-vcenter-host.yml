@@ -1,6 +1,5 @@
----
 - name: Check VM
-  hosts: all           # required for a valid playbook
+  hosts: all
   gather_facts: false
   tasks:
     - name: Get VM info
@@ -9,6 +8,6 @@
         username: "{{ lookup('env','VMWARE_USER') }}"
         password: "{{ lookup('env','VMWARE_PASSWORD') }}"
         validate_certs: false
-        name: "{{ inventory_hostname }}"
+        vm_name: "{{ inventory_hostname }}"
       delegate_to: localhost
 
