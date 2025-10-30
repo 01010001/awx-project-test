@@ -10,8 +10,8 @@
         password: "{{ vcenter_password }}"
         datacenter: "{{ datacenter_name }}"
         folder: "/{{ datacenter_name }}/vm/"
-        name: "{{ inventory_hostname }}"       # use the host's name from inventory
         state: present
+        name: "{{ hostvars[inventory_hostname]['config']['name'] }}"
         snapshot_name: snap1
         description: "Snapshot created by AWX"
       delegate_to: localhost                   # API call is made from localhost
