@@ -1,3 +1,4 @@
+---
 - name: Check VM
   community.vmware.vmware_vm_info:
     hostname: "{{ lookup('env','VMWARE_HOST') }}"
