@@ -9,6 +9,5 @@
         username: "{{ lookup('env','VMWARE_USER') }}"
         password: "{{ lookup('env','VMWARE_PASSWORD') }}"
         validate_certs: false
-        name: "ahmet-test"
       delegate_to: localhost
 
