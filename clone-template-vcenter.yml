@@ -1,0 +1,16 @@
+---
+- name:  Clone a virtual machine from Linux template and customize
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: clone a template
+      community.vmware.vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ datacenter_name }}"
+        folder: "/{{ datacenter_name }}/vm/" 
+        state: present
+        template: "{{ template_name }}"
+        name: "{{ vm_name }}"
+      delegate_to: localhost
