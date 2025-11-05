@@ -1,6 +1,5 @@
 ---
 - name: Create a virtual machine on given ESXi hostname
-  hosts: all
   gather_facts: false
   tasks:
     - name: Create a VM
