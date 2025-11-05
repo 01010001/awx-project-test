@@ -8,6 +8,7 @@
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
+        datacenter: "{{ datacenter_name }}"
         folder: "/{{ datacenter_name }}/vm/"
         name: "{{ vm_name }}"
         state: poweredon
