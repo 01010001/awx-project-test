@@ -1,7 +1,7 @@
 ---
 - name: Create a virtual machine on given ESXi hostname
-  gather_facts: false
   hosts: localhost
+  gather_facts: false
   tasks:
     - name: Create a VM
       community.vmware.vmware_guest:
@@ -22,7 +22,7 @@
           memory_mb: 512
           num_cpus: 2
           scsi: paravirtual
-        networks:
+        #networks:
         #- name: VM Network
           #mac: aa:bb:dd:aa:00:14
           #ip: 10.10.10.100
@@ -32,4 +32,3 @@
         #wait_for_ip_address_timeout: 600
       delegate_to: localhost
       register: deploy_vm
-
