@@ -1,8 +1,9 @@
+---
 - name: Update the machine
   hosts: all
   gather_facts: false
   tasks:
     - name: dnf update all
       ansible.builtin.dnf:
-      	name: "*"
-      	state: latest
+        name: "*"
+        state: latest
