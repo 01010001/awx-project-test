@@ -15,3 +15,8 @@
       ansible.builtin.debug:
         msg: "RESTART NEEDED on {{ inventory_hostname }}"
       when: needs_restarting.rc == 1
+
+    - name: Add host to 'needs_reboot' group
+      ansible.builtin.group_by:
+        key: "needs_reboot"
+      when: needs_restarting.rc == 1
