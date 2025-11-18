@@ -5,5 +5,8 @@
   gather_facts: false
   tasks:
     - name: run needs-restarting
-    ansible.builtin.shell:
-      cmd: "needs-restarting -r -s"
+      ansible.builtin.shell:
+        cmd: "needs-restarting -r -s"
+        changed_when: needs_restarting.rc == 1
+        failed_when: needs_restarting.rc == 0
+    
