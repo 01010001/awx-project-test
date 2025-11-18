@@ -10,4 +10,8 @@
       register: needs_restarting
       changed_when: needs_restarting.rc == 1
       failed_when: false
-    
+
+    - name: Report machines that need a restart
+      ansible.builtin.debug:
+        msg: "RESTART NEEDED on {{ inventory_hostname }}"
+      when: needs_restarting.rc == 1
