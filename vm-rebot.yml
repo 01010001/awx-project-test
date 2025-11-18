@@ -1,0 +1,11 @@
+---
+- name: Reboot selected hosts
+  hosts: {{ target_hosts | default('all') }}
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Reboot the hosts
+      ansible.builtin.reboot:
+        reboot_timeout: 600
+
