@@ -1,4 +1,0 @@
----
-# Bu örnek sadece görünmesi için, gerçek role yüklenmez
-- name: geerlingguy.nginx
-  version: 3.1.0
