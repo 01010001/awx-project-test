@@ -17,7 +17,7 @@
       when: needs_restarting.rc == 1
 
 
-    - name: Build list of hosts needing reboot
+    - name: Build list of hosts needing reboot.
       set_stats:
         data:
           needs_reboot_hosts: "{{ (needs_reboot_hosts | default([])) + [inventory_hostname] }}"
