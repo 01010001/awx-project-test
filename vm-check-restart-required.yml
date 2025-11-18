@@ -1,0 +1,9 @@
+---
+- name: check if restart is required
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: run needs-restarting
+    ansible.builtin.shell:
+      cmd: "needs-restarting -r -s"
