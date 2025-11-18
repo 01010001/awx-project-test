@@ -22,3 +22,9 @@
         data:
           needs_reboot_hosts: "{{ (needs_reboot_hosts | default([])) + [inventory_hostname] }}"
       when: needs_restarting.rc == 1
+
+    - name: set to null if there arent any needing reboot
+      run_once: true
+      set_stats:
+        data:
+          needs_reboot_hosts: "{{needs_reboot_hosts | default(None)}}"
