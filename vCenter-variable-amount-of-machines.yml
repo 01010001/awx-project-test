@@ -1,0 +1,28 @@
+---
+- name: Create multiple VMs
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    base_name: "{{ base_name | default('vm') }}"
+    vm_count: "{{ vm_count | default(1) }}"
+
+  tasks:
+    - name: Create VMs in a loop
+      community.vmware.vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ datacenter_name }}"
+        folder: "/{{ datacenter_name }}/vm/"
+        name: "{{ base_name }}{{ item }}"
+        state: poweredon
+        guest_id: otherGuest
+        esxi_hostname: "{{ esxi_hostname }}"
+        hardware:
+          memory_mb: 512
+          num_cpus: 1
+          scsi: paravirtual
+      delegate_to: localhost
+      loop: "{{ range(1, vm_count | int + 1) | list }}"
+
