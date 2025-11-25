@@ -19,6 +19,10 @@
         state: poweredon
         guest_id: otherGuest
         esxi_hostname: "{{ esxi_hostname }}"
+        disk:
+        - size_mb: 1
+          type: thin
+          datastore: datastore2
         hardware:
           memory_mb: 512
           num_cpus: 1
