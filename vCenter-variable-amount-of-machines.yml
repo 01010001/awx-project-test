@@ -16,7 +16,7 @@
         datacenter: "{{ datacenter_name }}"
         folder: "/{{ datacenter_name }}/vm/"
         name: "{{ base_name }}{{ item }}"
-        state: poweredon
+        state: "{{machine_state}}"
         guest_id: otherGuest
         esxi_hostname: "{{ esxi_hostname }}"
         disk:
