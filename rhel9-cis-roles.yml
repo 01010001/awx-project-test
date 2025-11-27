@@ -1,0 +1,13 @@
+---
+- name: Apply RHEL9 CIS hardening
+  hosts: all
+  become: yes
+
+  vars:
+    rhel9cis_section1_level1: true
+    rhel9cis_section1_level2: false
+    rhel9cis_selinux_state: enforcing
+
+  roles:
+    - role: ansible-lockdown.rhel9_cis
+
