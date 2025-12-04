@@ -1,0 +1,11 @@
+---
+- name: user removal
+  hosts: all
+  become: true
+  tasks:
+  - name: remove the user and by choice delete their files
+    ansible.builtin.user:
+      name: "{{ user_name }}"
+      remove: "{{ remove_user_files}}"
+      state: absent
+
